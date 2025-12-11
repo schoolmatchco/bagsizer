@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Plane, CheckCircle, XCircle, Info } from 'lucide-react';
+import { Plane, CheckCircle, XCircle, ChevronRight } from 'lucide-react';
 import { useAppStore, type Airline, type Bag } from '@/store/useAppStore';
 import { checkCompliance } from '@/lib/complianceEngine';
 import Image from 'next/image';
@@ -18,8 +18,8 @@ const bags = bagsData as Bag[];
 
 const springConfig = {
   type: 'spring' as const,
-  stiffness: 300,
-  damping: 30,
+  stiffness: 260,
+  damping: 20,
 };
 
 export default function Home() {
@@ -37,7 +37,7 @@ export default function Home() {
   // Determine the bag dimensions to check (from selected bag OR custom dimensions)
   const bagToCheck = selectedBag || (customDimensions ? {
     dimensions: customDimensions,
-    material: 'soft' as const, // Default to soft for custom dimensions
+    material: 'soft' as const,
   } : null);
 
   // Calculate compliance
@@ -49,200 +49,175 @@ export default function Home() {
     : null;
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
-      {/* Header */}
-      <header className="border-b border-slate-200/50 bg-white/80 backdrop-blur-lg sticky top-0 z-30">
-        <div className="container mx-auto px-4 py-6 max-w-7xl">
-          <div className="text-center">
-            <div className="inline-flex items-center justify-center gap-3 mb-2">
-              <div className="p-2 bg-blue-600 rounded-xl">
-                <Plane className="text-white" size={28} strokeWidth={2.5} />
+    <main className="min-h-screen bg-slate-50">
+      {/* Simple Header */}
+      <header className="bg-white border-b border-slate-200">
+        <div className="container mx-auto px-6 py-8 max-w-6xl">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center">
+                <Plane className="text-white" size={20} strokeWidth={2.5} />
               </div>
-              <h1 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                BagSizer
-              </h1>
+              <span className="text-2xl font-bold text-slate-900">BagSizer</span>
             </div>
-            <p className="text-base md:text-lg text-slate-600 font-medium">
-              Check if your bag fits before you reach the gate
-            </p>
-            <p className="text-xs md:text-sm text-slate-500 mt-1">
-              Avoid surprise fees up to $99
-            </p>
           </div>
         </div>
       </header>
 
-      <div className="container mx-auto px-4 py-8 max-w-7xl">
-        {/* Airline Selection */}
-        <motion.button
-          onClick={() => setShowAirlines(true)}
-          className="w-full group relative bg-white rounded-2xl p-6 mb-6 shadow-sm hover:shadow-xl transition-all duration-300 border-2 border-slate-100 hover:border-blue-300 text-left"
-          whileHover={{ y: -2 }}
-          transition={springConfig}
-        >
-          <div className="flex items-start justify-between">
-            <div className="flex items-center gap-3">
-              <div className="p-3 bg-blue-50 rounded-2xl group-hover:bg-blue-100 transition-colors">
-                <Plane className="text-blue-600" size={24} strokeWidth={2.5} />
+      {/* Hero Section */}
+      {!selectedAirline && (
+        <div className="container mx-auto px-6 py-20 max-w-4xl text-center">
+          <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight">
+            Check if your bag fits<br />before you reach the gate
+          </h1>
+          <p className="text-xl text-slate-600 mb-12 max-w-2xl mx-auto">
+            Avoid surprise fees up to $99. Compare your bag against airline size requirements instantly.
+          </p>
+          <button
+            onClick={() => setShowAirlines(true)}
+            className="inline-flex items-center gap-2 px-8 py-4 bg-slate-900 hover:bg-slate-800 text-white font-semibold rounded-full transition-all shadow-lg hover:shadow-xl"
+          >
+            Get started for free
+            <ChevronRight size={20} />
+          </button>
+        </div>
+      )}
+
+      {/* Main Content */}
+      {selectedAirline && (
+        <div className="container mx-auto px-6 py-12 max-w-6xl">
+          {/* Airline Selection Card */}
+          <motion.button
+            onClick={() => setShowAirlines(true)}
+            className="w-full bg-white rounded-3xl p-8 mb-8 shadow-sm hover:shadow-md transition-all border border-slate-200 text-left"
+            whileHover={{ y: -2 }}
+            transition={springConfig}
+          >
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-6">
+                <div className="w-20 h-20 relative flex items-center justify-center bg-slate-50 rounded-2xl p-3">
+                  <Image
+                    src={selectedAirline.logo}
+                    alt={selectedAirline.name}
+                    width={80}
+                    height={80}
+                    className="object-contain"
+                  />
+                </div>
+                <div>
+                  <p className="text-sm text-slate-500 mb-1">Flying with</p>
+                  <p className="text-2xl font-bold text-slate-900">{selectedAirline.name}</p>
+                  {selectedAirline.fees.gate_check > 0 && (
+                    <p className="text-sm text-slate-600 mt-1">
+                      Gate check fee: ${selectedAirline.fees.gate_check}
+                    </p>
+                  )}
+                </div>
               </div>
-              <div>
-                <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wide">Step 1</h2>
-                <p className="text-xl font-bold text-slate-900">Choose Airline</p>
-              </div>
+              <ChevronRight className="text-slate-400" size={24} />
             </div>
-            {selectedAirline && (
-              <div className="p-2 bg-green-50 rounded-full">
-                <CheckCircle className="text-green-600" size={20} />
-              </div>
-            )}
+          </motion.button>
+
+          {/* Sizer Type Toggle */}
+          <div className="bg-white rounded-3xl p-8 mb-8 shadow-sm border border-slate-200">
+            <p className="text-sm text-slate-500 mb-4">Bag type</p>
+            <div className="inline-flex bg-slate-100 rounded-2xl p-1.5 gap-1">
+              <button
+                onClick={() => setSelectedSizerType('personal')}
+                className={`px-8 py-3 rounded-xl font-semibold transition-all ${
+                  selectedSizerType === 'personal'
+                    ? 'bg-slate-900 text-white shadow-sm'
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                Personal Item
+              </button>
+              <button
+                onClick={() => setSelectedSizerType('carry_on')}
+                className={`px-8 py-3 rounded-xl font-semibold transition-all ${
+                  selectedSizerType === 'carry_on'
+                    ? 'bg-slate-900 text-white shadow-sm'
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                Carry-On
+              </button>
+            </div>
           </div>
 
-          {selectedAirline ? (
-            <div className="flex items-center gap-4 bg-slate-50 rounded-2xl p-4 mt-4">
-              <div className="w-16 h-16 relative flex items-center justify-center bg-white rounded-xl p-2 shadow-sm">
-                <Image
-                  src={selectedAirline.logo}
-                  alt={selectedAirline.name}
-                  width={64}
-                  height={64}
-                  className="object-contain"
-                />
-              </div>
-              <div className="flex-1">
-                <p className="font-bold text-slate-900">{selectedAirline.name}</p>
-                <p className="text-sm text-slate-600">
-                  {selectedAirline.fees.gate_check > 0
-                    ? `Gate fee: $${selectedAirline.fees.gate_check}`
-                    : 'No gate fees'
-                  }
-                </p>
-              </div>
-            </div>
-          ) : (
-            <div className="text-center py-6 mt-4">
-              <p className="text-slate-400 font-medium">Click to select your airline</p>
-            </div>
-          )}
-        </motion.button>
-
-        {/* Sizer Type Selection */}
-        <AnimatePresence>
-          {selectedAirline && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={springConfig}
-              className="bg-white rounded-2xl p-6 shadow-sm border-2 border-slate-100 mb-6"
-            >
-              <p className="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-4">Bag Type</p>
-              <div className="grid grid-cols-2 gap-4">
-                <button
-                  onClick={() => setSelectedSizerType('personal')}
-                  className={`py-4 px-6 rounded-2xl font-bold transition-all ${
-                    selectedSizerType === 'personal'
-                      ? 'bg-gradient-to-br from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-200'
-                      : 'bg-slate-50 text-slate-700 hover:bg-slate-100'
-                  }`}
-                >
-                  Personal Item
-                </button>
-                <button
-                  onClick={() => setSelectedSizerType('carry_on')}
-                  className={`py-4 px-6 rounded-2xl font-bold transition-all ${
-                    selectedSizerType === 'carry_on'
-                      ? 'bg-gradient-to-br from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-200'
-                      : 'bg-slate-50 text-slate-700 hover:bg-slate-100'
-                  }`}
-                >
-                  Carry-On
-                </button>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* Split Intent Layout: Desktop 2-column, Mobile vertical stack */}
-        {selectedAirline && (
-          <div className="grid lg:grid-cols-[1.5fr_1fr] gap-6">
-            {/* LEFT COLUMN: Bag Checker */}
-            <div className="space-y-6">
-              {/* BagSelector Component */}
+          {/* Two Column Layout */}
+          <div className="grid lg:grid-cols-[1fr_400px] gap-8">
+            {/* Left: Bag Checker */}
+            <div className="space-y-8">
               <BagSelector bags={bags} />
 
               {/* Compliance Results */}
               <AnimatePresence mode="wait">
                 {compliance && (
                   <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
                     transition={springConfig}
-                    className={`rounded-2xl p-6 shadow-xl ${
+                    className={`rounded-3xl p-8 shadow-sm border-2 ${
                       compliance.passes
-                        ? 'bg-gradient-to-br from-emerald-50 to-green-50 border-2 border-emerald-200'
-                        : 'bg-gradient-to-br from-rose-50 to-red-50 border-2 border-rose-200'
+                        ? 'bg-emerald-50 border-emerald-200'
+                        : 'bg-rose-50 border-rose-200'
                     }`}
                   >
                     <div className="flex items-start gap-6">
-                      <div className={`p-4 rounded-2xl ${compliance.passes ? 'bg-emerald-100' : 'bg-rose-100'}`}>
+                      <div className={`p-4 rounded-2xl ${
+                        compliance.passes ? 'bg-emerald-100' : 'bg-rose-100'
+                      }`}>
                         {compliance.passes ? (
-                          <CheckCircle className="text-emerald-600" size={40} strokeWidth={2.5} />
+                          <CheckCircle className="text-emerald-600" size={32} strokeWidth={2.5} />
                         ) : (
-                          <XCircle className="text-rose-600" size={40} strokeWidth={2.5} />
+                          <XCircle className="text-rose-600" size={32} strokeWidth={2.5} />
                         )}
                       </div>
 
                       <div className="flex-1">
-                        <h3 className={`text-2xl md:text-3xl font-extrabold mb-2 ${compliance.passes ? 'text-emerald-900' : 'text-rose-900'}`}>
+                        <h3 className={`text-3xl font-bold mb-2 ${
+                          compliance.passes ? 'text-emerald-900' : 'text-rose-900'
+                        }`}>
                           {compliance.passes ? 'Perfect Fit!' : 'Too Large'}
                         </h3>
-                        <p className={`text-base md:text-lg mb-6 ${compliance.passes ? 'text-emerald-800' : 'text-rose-800'}`}>
+                        <p className={`text-lg mb-6 ${
+                          compliance.passes ? 'text-emerald-700' : 'text-rose-700'
+                        }`}>
                           {compliance.reason}
                         </p>
 
+                        {/* Dimension Grid */}
+                        <div className="grid grid-cols-3 gap-4 bg-white/60 rounded-2xl p-6">
+                          {[
+                            { label: 'Height', bag: bagToCheck!.dimensions.h, sizer: selectedAirline.sizers[selectedSizerType].h, margin: compliance.marginOfError!.h },
+                            { label: 'Width', bag: bagToCheck!.dimensions.w, sizer: selectedAirline.sizers[selectedSizerType].w, margin: compliance.marginOfError!.w },
+                            { label: 'Depth', bag: bagToCheck!.dimensions.d, sizer: selectedAirline.sizers[selectedSizerType].d, margin: compliance.marginOfError!.d },
+                          ].map((dim) => (
+                            <div key={dim.label} className="text-center">
+                              <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">
+                                {dim.label}
+                              </p>
+                              <p className={`text-2xl font-bold mb-1 ${
+                                dim.margin > 0 ? 'text-rose-600' : 'text-emerald-600'
+                              }`}>
+                                {dim.bag}"
+                              </p>
+                              <p className="text-xs text-slate-500">limit {dim.sizer}"</p>
+                            </div>
+                          ))}
+                        </div>
+
                         {/* Fee Warning */}
                         {!compliance.passes && selectedAirline.fees.gate_check > 0 && (
-                          <div className="bg-white/80 backdrop-blur rounded-2xl p-5 mb-6 border border-rose-200">
-                            <div className="flex items-center gap-3">
-                              <div className="p-2 bg-rose-100 rounded-xl">
-                                <Info className="text-rose-600" size={20} />
-                              </div>
-                              <div>
-                                <p className="font-bold text-rose-900">Gate-Check Fee</p>
-                                <p className="text-2xl font-extrabold text-rose-600">
-                                  ${selectedAirline.fees.gate_check}
-                                </p>
-                              </div>
-                            </div>
+                          <div className="mt-6 bg-white/80 rounded-2xl p-5 border border-rose-300">
+                            <p className="text-sm font-semibold text-rose-900 mb-1">Gate check fee</p>
+                            <p className="text-3xl font-bold text-rose-600">
+                              ${selectedAirline.fees.gate_check}
+                            </p>
                           </div>
                         )}
-
-                        {/* Dimension Breakdown */}
-                        <div className="bg-white/80 backdrop-blur rounded-2xl p-5 border border-slate-200">
-                          <p className="font-bold text-slate-900 mb-4 text-sm uppercase tracking-wide">
-                            Dimension Check
-                          </p>
-                          <div className="grid grid-cols-3 gap-4">
-                            {[
-                              { label: 'Height', bag: bagToCheck!.dimensions.h, sizer: selectedAirline.sizers[selectedSizerType].h, margin: compliance.marginOfError!.h },
-                              { label: 'Width', bag: bagToCheck!.dimensions.w, sizer: selectedAirline.sizers[selectedSizerType].w, margin: compliance.marginOfError!.w },
-                              { label: 'Depth', bag: bagToCheck!.dimensions.d, sizer: selectedAirline.sizers[selectedSizerType].d, margin: compliance.marginOfError!.d },
-                            ].map((dim) => (
-                              <div key={dim.label} className="text-center">
-                                <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">
-                                  {dim.label}
-                                </p>
-                                <div className="space-y-1">
-                                  <p className={`text-xl md:text-2xl font-bold ${dim.margin > 0 ? 'text-rose-600' : 'text-emerald-600'}`}>
-                                    {dim.bag}"
-                                  </p>
-                                  <p className="text-xs text-slate-500">limit: {dim.sizer}"</p>
-                                </div>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
                       </div>
                     </div>
                   </motion.div>
@@ -250,58 +225,42 @@ export default function Home() {
               </AnimatePresence>
             </div>
 
-            {/* RIGHT COLUMN: Verified Bags (Desktop) / Below (Mobile) */}
-            <div className="lg:sticky lg:top-32 lg:self-start">
+            {/* Right: Verified Bags (Sticky) */}
+            <div className="lg:sticky lg:top-8 lg:self-start">
               <VerifiedBagGrid
                 airline={selectedAirline}
                 sizerType={selectedSizerType}
                 bags={bags}
-                maxBags={6}
+                maxBags={3}
               />
             </div>
           </div>
-        )}
-
-        {/* Info Message */}
-        {!selectedAirline && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="text-center py-12"
-          >
-            <div className="inline-flex items-center gap-2 px-6 py-3 bg-white rounded-full shadow-sm border border-slate-200">
-              <Info className="text-blue-600" size={16} />
-              <p className="text-sm text-slate-600 font-medium">
-                Select an airline to get started
-              </p>
-            </div>
-          </motion.div>
-        )}
-      </div>
+        </div>
+      )}
 
       {/* Airline Modal */}
       <AnimatePresence>
         {showAirlines && (
           <>
             <motion.div
-              className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40"
+              className="fixed inset-0 bg-black/40 z-40"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setShowAirlines(false)}
             />
             <motion.div
-              className="fixed inset-4 md:inset-auto md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-full md:max-w-4xl md:max-h-[80vh] bg-white rounded-3xl shadow-2xl z-50 overflow-hidden flex flex-col"
-              initial={{ opacity: 0, scale: 0.9 }}
+              className="fixed inset-4 md:inset-auto md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-full md:max-w-4xl md:max-h-[85vh] bg-white rounded-3xl shadow-2xl z-50 overflow-hidden flex flex-col"
+              initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
+              exit={{ opacity: 0, scale: 0.95 }}
               transition={springConfig}
             >
-              <div className="border-b border-slate-200 p-6 bg-gradient-to-r from-blue-50 to-indigo-50">
-                <h3 className="text-2xl font-extrabold text-slate-900">Select Your Airline</h3>
-                <p className="text-sm text-slate-600 mt-1">Choose from {airlines.length} airlines</p>
+              <div className="p-8 border-b border-slate-200">
+                <h3 className="text-3xl font-bold text-slate-900">Select your airline</h3>
+                <p className="text-slate-600 mt-2">Choose from {airlines.length} airlines worldwide</p>
               </div>
-              <div className="overflow-auto p-6">
+              <div className="overflow-auto p-8">
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                   {airlines.map((airline) => (
                     <motion.button
@@ -310,24 +269,24 @@ export default function Home() {
                         setSelectedAirline(airline);
                         setShowAirlines(false);
                       }}
-                      className="group p-5 bg-slate-50 hover:bg-white border-2 border-slate-200 hover:border-blue-400 rounded-2xl transition-all text-center"
-                      whileHover={{ scale: 1.05, y: -4 }}
+                      className="p-6 bg-white hover:bg-slate-50 border-2 border-slate-200 hover:border-slate-900 rounded-2xl transition-all text-center"
+                      whileHover={{ y: -4 }}
                       whileTap={{ scale: 0.98 }}
                       transition={springConfig}
                     >
-                      <div className="w-full h-20 relative flex items-center justify-center mb-4 bg-white rounded-xl p-3 group-hover:shadow-md transition-shadow">
+                      <div className="w-full h-16 relative flex items-center justify-center mb-4">
                         <Image
                           src={airline.logo}
                           alt={airline.name}
-                          width={80}
-                          height={50}
+                          width={64}
+                          height={40}
                           className="object-contain"
                         />
                       </div>
-                      <p className="font-bold text-slate-900 mb-1">{airline.name}</p>
-                      <p className="text-xs text-slate-600">
-                        {airline.fees.gate_check > 0 ? `$${airline.fees.gate_check} fee` : 'No fees'}
-                      </p>
+                      <p className="font-bold text-slate-900">{airline.name}</p>
+                      {airline.fees.gate_check > 0 && (
+                        <p className="text-xs text-slate-500 mt-1">${airline.fees.gate_check} gate fee</p>
+                      )}
                     </motion.button>
                   ))}
                 </div>
