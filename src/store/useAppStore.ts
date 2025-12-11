@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-interface Bag {
+export interface Bag {
   id: string;
   name: string;
   dimensions: {
@@ -9,34 +9,30 @@ interface Bag {
     d: number;
     unit: string;
   };
-  material: string;
+  material: 'soft' | 'hard';
   estimated_price: number;
   affiliate_link: string;
   categories: string[];
+  description: string;
 }
 
-interface Airline {
+export interface Sizer {
+  h: number;
+  w: number;
+  d: number;
+  unit: string;
+  strictness: 'extreme' | 'high' | 'medium';
+  hard_sided: boolean;
+}
+
+export interface Airline {
   id: string;
   name: string;
-  logo_code: string;
+  logo: string;
   regions: string[];
   sizers: {
-    personal: {
-      h: number;
-      w: number;
-      d: number;
-      unit: string;
-      strictness: string;
-      hard_sided: boolean;
-    };
-    carry_on: {
-      h: number;
-      w: number;
-      d: number;
-      unit: string;
-      strictness: string;
-      hard_sided: boolean;
-    };
+    personal: Sizer;
+    carry_on: Sizer;
   };
   fees: {
     gate_check: number;
@@ -46,13 +42,17 @@ interface Airline {
 interface AppState {
   selectedBag: Bag | null;
   selectedAirline: Airline | null;
+  selectedSizerType: 'personal' | 'carry_on';
   setSelectedBag: (bag: Bag | null) => void;
   setSelectedAirline: (airline: Airline | null) => void;
+  setSelectedSizerType: (type: 'personal' | 'carry_on') => void;
 }
 
 export const useAppStore = create<AppState>((set) => ({
   selectedBag: null,
   selectedAirline: null,
+  selectedSizerType: 'carry_on',
   setSelectedBag: (bag) => set({ selectedBag: bag }),
   setSelectedAirline: (airline) => set({ selectedAirline: airline }),
+  setSelectedSizerType: (type) => set({ selectedSizerType: type }),
 }));

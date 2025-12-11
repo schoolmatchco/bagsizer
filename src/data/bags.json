@@ -1,7 +1,7 @@
 [
   {
-    "id": "sample-personal-backpack",
-    "name": "Compact Travel Backpack",
+    "id": "small-backpack",
+    "name": "Compact Personal Backpack",
     "dimensions": {
       "h": 16,
       "w": 12,
@@ -9,12 +9,58 @@
       "unit": "in"
     },
     "material": "soft",
-    "estimated_price": 49.99,
-    "affiliate_link": "",
-    "categories": ["personal", "backpack"]
+    "estimated_price": 39.99,
+    "affiliate_link": "https://amazon.com/dp/example1",
+    "categories": ["personal", "backpack"],
+    "description": "Perfect for tight personal item requirements"
   },
   {
-    "id": "sample-carry-on-roller",
+    "id": "medium-backpack",
+    "name": "Standard Travel Backpack",
+    "dimensions": {
+      "h": 18,
+      "w": 13,
+      "d": 8,
+      "unit": "in"
+    },
+    "material": "soft",
+    "estimated_price": 59.99,
+    "affiliate_link": "https://amazon.com/dp/example2",
+    "categories": ["personal", "backpack"],
+    "description": "Great for most airlines as personal item"
+  },
+  {
+    "id": "large-backpack",
+    "name": "Large Travel Backpack",
+    "dimensions": {
+      "h": 20,
+      "w": 14,
+      "d": 9,
+      "unit": "in"
+    },
+    "material": "soft",
+    "estimated_price": 79.99,
+    "affiliate_link": "https://amazon.com/dp/example3",
+    "categories": ["carry-on", "backpack"],
+    "description": "Maximum size backpack, may not fit strict airlines"
+  },
+  {
+    "id": "underseat-roller",
+    "name": "Underseat Roller Bag",
+    "dimensions": {
+      "h": 16,
+      "w": 13,
+      "d": 8,
+      "unit": "in"
+    },
+    "material": "hard",
+    "estimated_price": 89.99,
+    "affiliate_link": "https://amazon.com/dp/example4",
+    "categories": ["personal", "roller"],
+    "description": "Wheeled convenience for personal item"
+  },
+  {
+    "id": "standard-carry-on",
     "name": "Standard Carry-On Roller",
     "dimensions": {
       "h": 22,
@@ -24,7 +70,83 @@
     },
     "material": "hard",
     "estimated_price": 129.99,
-    "affiliate_link": "",
-    "categories": ["carry-on", "roller"]
+    "affiliate_link": "https://amazon.com/dp/example5",
+    "categories": ["carry-on", "roller"],
+    "description": "Industry standard carry-on size"
+  },
+  {
+    "id": "max-carry-on",
+    "name": "Maximum Size Carry-On",
+    "dimensions": {
+      "h": 24,
+      "w": 16,
+      "d": 10,
+      "unit": "in"
+    },
+    "material": "hard",
+    "estimated_price": 149.99,
+    "affiliate_link": "https://amazon.com/dp/example6",
+    "categories": ["carry-on", "roller"],
+    "description": "Largest allowable on some airlines"
+  },
+  {
+    "id": "spirit-killer",
+    "name": "Oversized Carry-On (Too Big)",
+    "dimensions": {
+      "h": 25,
+      "w": 18,
+      "d": 11,
+      "unit": "in"
+    },
+    "material": "hard",
+    "estimated_price": 169.99,
+    "affiliate_link": "https://amazon.com/dp/example7",
+    "categories": ["carry-on", "roller"],
+    "description": "Will not fit most airline sizers - guaranteed gate check"
+  },
+  {
+    "id": "tote-bag",
+    "name": "Canvas Tote Bag",
+    "dimensions": {
+      "h": 15,
+      "w": 13,
+      "d": 6,
+      "unit": "in"
+    },
+    "material": "soft",
+    "estimated_price": 29.99,
+    "affiliate_link": "https://amazon.com/dp/example8",
+    "categories": ["personal", "tote"],
+    "description": "Flexible personal item for any airline"
+  },
+  {
+    "id": "duffel-small",
+    "name": "Small Duffel Bag",
+    "dimensions": {
+      "h": 18,
+      "w": 12,
+      "d": 8,
+      "unit": "in"
+    },
+    "material": "soft",
+    "estimated_price": 45.99,
+    "affiliate_link": "https://amazon.com/dp/example9",
+    "categories": ["personal", "duffel"],
+    "description": "Squishable personal item option"
+  },
+  {
+    "id": "duffel-large",
+    "name": "Large Duffel Bag",
+    "dimensions": {
+      "h": 22,
+      "w": 15,
+      "d": 10,
+      "unit": "in"
+    },
+    "material": "soft",
+    "estimated_price": 65.99,
+    "affiliate_link": "https://amazon.com/dp/example10",
+    "categories": ["carry-on", "duffel"],
+    "description": "Soft-sided carry-on alternative"
   }
 ]
