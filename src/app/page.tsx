@@ -249,13 +249,14 @@ export default function Home() {
               exit={{ opacity: 0 }}
               onClick={() => setShowAirlines(false)}
             />
-            <motion.div
-              className="fixed inset-4 md:inset-auto md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-full md:max-w-4xl md:max-h-[85vh] bg-white rounded-3xl shadow-2xl z-50 overflow-hidden flex flex-col"
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={springConfig}
-            >
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+              <motion.div
+                className="bg-white rounded-3xl shadow-2xl w-full max-w-4xl max-h-[85vh] overflow-hidden flex flex-col"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={springConfig}
+              >
               <div className="p-8 border-b border-slate-200">
                 <h3 className="text-3xl font-bold text-slate-900">Select your airline</h3>
                 <p className="text-slate-600 mt-2">Choose from {airlines.length} airlines worldwide</p>
@@ -291,7 +292,8 @@ export default function Home() {
                   ))}
                 </div>
               </div>
-            </motion.div>
+              </motion.div>
+            </div>
           </>
         )}
       </AnimatePresence>
