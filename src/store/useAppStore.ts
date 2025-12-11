@@ -3,6 +3,7 @@ import { create } from 'zustand';
 export interface Bag {
   id: string;
   name: string;
+  brand?: string;
   dimensions: {
     h: number;
     w: number;
@@ -14,6 +15,9 @@ export interface Bag {
   affiliate_link: string;
   categories: string[];
   description: string;
+  commission_tier?: 'high' | 'medium' | 'low';
+  image_url?: string;
+  versatility_score?: number;
 }
 
 export interface Sizer {
@@ -21,7 +25,7 @@ export interface Sizer {
   w: number;
   d: number;
   unit: string;
-  strictness: 'extreme' | 'high' | 'medium';
+  strictness: 'extreme' | 'high' | 'medium' | 'low';
   hard_sided: boolean;
 }
 
@@ -40,19 +44,33 @@ export interface Airline {
 }
 
 interface AppState {
-  selectedBag: Bag | null;
+  // Airline selection
   selectedAirline: Airline | null;
   selectedSizerType: 'personal' | 'carry_on';
+
+  // Bag selection (from database)
+  selectedBag: Bag | null;
+
+  // Custom dimensions (manual input)
+  customDimensions: { h: number; w: number; d: number; unit: string } | null;
+
+  // Actions
   setSelectedBag: (bag: Bag | null) => void;
   setSelectedAirline: (airline: Airline | null) => void;
   setSelectedSizerType: (type: 'personal' | 'carry_on') => void;
+  setCustomDimensions: (dims: { h: number; w: number; d: number; unit: string } | null) => void;
+  clearSelection: () => void;
 }
 
 export const useAppStore = create<AppState>((set) => ({
   selectedBag: null,
   selectedAirline: null,
   selectedSizerType: 'carry_on',
-  setSelectedBag: (bag) => set({ selectedBag: bag }),
+  customDimensions: null,
+
+  setSelectedBag: (bag) => set({ selectedBag: bag, customDimensions: null }),
   setSelectedAirline: (airline) => set({ selectedAirline: airline }),
   setSelectedSizerType: (type) => set({ selectedSizerType: type }),
+  setCustomDimensions: (dims) => set({ customDimensions: dims, selectedBag: null }),
+  clearSelection: () => set({ selectedBag: null, customDimensions: null }),
 }));

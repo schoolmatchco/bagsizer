@@ -10,7 +10,7 @@ interface Dimensions {
 }
 
 interface Sizer extends Dimensions {
-  strictness: 'extreme' | 'high' | 'medium';
+  strictness: 'extreme' | 'high' | 'medium' | 'low';
   hard_sided: boolean;
 }
 
@@ -51,13 +51,26 @@ export function checkCompliance(bag: Bag, sizer: Sizer): ComplianceResult {
       case 'medium':
         tolerance = 1;
         break;
+      case 'low':
+        tolerance = 1.5;
+        break;
     }
   } else if (sizer.hard_sided) {
     // Hard-sided sizer - strict measurements
     tolerance = 0;
   } else {
     // Mixed scenario - moderate tolerance
-    tolerance = sizer.strictness === 'extreme' ? 0 : 0.25;
+    switch (sizer.strictness) {
+      case 'extreme':
+        tolerance = 0;
+        break;
+      case 'low':
+        tolerance = 0.5;
+        break;
+      default:
+        tolerance = 0.25;
+        break;
+    }
   }
 
   // Check each dimension

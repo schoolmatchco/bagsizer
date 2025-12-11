@@ -1,67 +1,141 @@
 [
   {
-    "id": "small-backpack",
-    "name": "Compact Personal Backpack",
+    "id": "away-carry-on",
+    "name": "Away The Carry-On",
+    "brand": "Away",
     "dimensions": {
-      "h": 16,
-      "w": 12,
-      "d": 7,
+      "h": 21.7,
+      "w": 13.7,
+      "d": 9,
+      "unit": "in"
+    },
+    "material": "hard",
+    "estimated_price": 275,
+    "affiliate_link": "LINK_AWAY_KEY",
+    "categories": ["carry-on", "roller"],
+    "description": "Premium hard-shell carry-on with TSA-approved lock",
+    "commission_tier": "high",
+    "image_url": "https://placehold.co/400x500/3b82f6/white?text=Away+Carry-On",
+    "versatility_score": 85
+  },
+  {
+    "id": "tortuga-travel-backpack-40l",
+    "name": "Tortuga Travel Backpack 40L",
+    "brand": "Tortuga",
+    "dimensions": {
+      "h": 21.7,
+      "w": 13.8,
+      "d": 7.9,
       "unit": "in"
     },
     "material": "soft",
-    "estimated_price": 39.99,
-    "affiliate_link": "https://amazon.com/dp/example1",
-    "categories": ["personal", "backpack"],
-    "description": "Perfect for tight personal item requirements"
+    "estimated_price": 249,
+    "affiliate_link": "LINK_TORTUGA_KEY",
+    "categories": ["carry-on", "backpack"],
+    "description": "Designed specifically for Spirit/Frontier personal item limits",
+    "commission_tier": "high",
+    "image_url": "https://placehold.co/400x500/10b981/white?text=Tortuga+40L",
+    "versatility_score": 90
   },
   {
-    "id": "medium-backpack",
-    "name": "Standard Travel Backpack",
+    "id": "osprey-farpoint-40",
+    "name": "Osprey Farpoint 40",
+    "brand": "Osprey",
     "dimensions": {
-      "h": 18,
-      "w": 13,
-      "d": 8,
-      "unit": "in"
-    },
-    "material": "soft",
-    "estimated_price": 59.99,
-    "affiliate_link": "https://amazon.com/dp/example2",
-    "categories": ["personal", "backpack"],
-    "description": "Great for most airlines as personal item"
-  },
-  {
-    "id": "large-backpack",
-    "name": "Large Travel Backpack",
-    "dimensions": {
-      "h": 20,
+      "h": 22,
       "w": 14,
       "d": 9,
       "unit": "in"
     },
     "material": "soft",
-    "estimated_price": 79.99,
-    "affiliate_link": "https://amazon.com/dp/example3",
+    "estimated_price": 180,
+    "affiliate_link": "LINK_OSPREY_KEY",
     "categories": ["carry-on", "backpack"],
-    "description": "Maximum size backpack, may not fit strict airlines"
+    "description": "Popular travel backpack, fits most airlines",
+    "commission_tier": "medium",
+    "image_url": "https://placehold.co/400x500/8b5cf6/white?text=Osprey+Farpoint",
+    "versatility_score": 75
   },
   {
-    "id": "underseat-roller",
-    "name": "Underseat Roller Bag",
+    "id": "cabinzero-classic-36l",
+    "name": "CabinZero Classic 36L",
+    "brand": "CabinZero",
     "dimensions": {
-      "h": 16,
-      "w": 13,
-      "d": 8,
+      "h": 19.7,
+      "w": 13.4,
+      "d": 7.9,
+      "unit": "in"
+    },
+    "material": "soft",
+    "estimated_price": 89,
+    "affiliate_link": "LINK_CABINZERO_KEY",
+    "categories": ["carry-on", "backpack"],
+    "description": "Budget-friendly, fits all airlines including Ryanair",
+    "commission_tier": "high",
+    "image_url": "https://placehold.co/400x500/ec4899/white?text=CabinZero+36L",
+    "versatility_score": 95
+  },
+  {
+    "id": "peak-design-travel-45l",
+    "name": "Peak Design Travel Backpack 45L",
+    "brand": "Peak Design",
+    "dimensions": {
+      "h": 21.6,
+      "w": 13.4,
+      "d": 9.8,
+      "unit": "in"
+    },
+    "material": "soft",
+    "estimated_price": 299,
+    "affiliate_link": "LINK_PEAKDESIGN_KEY",
+    "categories": ["carry-on", "backpack"],
+    "description": "Premium expandable backpack for creatives",
+    "commission_tier": "high",
+    "image_url": "https://placehold.co/400x500/f59e0b/white?text=Peak+Design",
+    "versatility_score": 70
+  },
+  {
+    "id": "samsonite-winfield-2",
+    "name": "Samsonite Winfield 2 Carry-On",
+    "brand": "Samsonite",
+    "dimensions": {
+      "h": 22,
+      "w": 14,
+      "d": 9.5,
       "unit": "in"
     },
     "material": "hard",
-    "estimated_price": 89.99,
-    "affiliate_link": "https://amazon.com/dp/example4",
-    "categories": ["personal", "roller"],
-    "description": "Wheeled convenience for personal item"
+    "estimated_price": 149,
+    "affiliate_link": "AMAZON_LINK_HERE",
+    "categories": ["carry-on", "roller"],
+    "description": "Classic hard-shell spinner",
+    "commission_tier": "medium",
+    "image_url": "https://placehold.co/400x500/6366f1/white?text=Samsonite",
+    "versatility_score": 80
   },
   {
-    "id": "standard-carry-on",
-    "name": "Standard Carry-On Roller",
+    "id": "aer-travel-pack-3",
+    "name": "Aer Travel Pack 3",
+    "brand": "Aer",
+    "dimensions": {
+      "h": 21.6,
+      "w": 13.4,
+      "d": 7.9,
+      "unit": "in"
+    },
+    "material": "soft",
+    "estimated_price": 280,
+    "affiliate_link": "LINK_AER_KEY",
+    "categories": ["carry-on", "backpack"],
+    "description": "Minimalist travel backpack",
+    "commission_tier": "high",
+    "image_url": "https://placehold.co/400x500/14b8a6/white?text=Aer+Travel",
+    "versatility_score": 88
+  },
+  {
+    "id": "monos-carry-on",
+    "name": "Monos Carry-On",
+    "brand": "Monos",
     "dimensions": {
       "h": 22,
       "w": 14,
@@ -69,44 +143,113 @@
       "unit": "in"
     },
     "material": "hard",
-    "estimated_price": 129.99,
-    "affiliate_link": "https://amazon.com/dp/example5",
+    "estimated_price": 295,
+    "affiliate_link": "LINK_MONOS_KEY",
     "categories": ["carry-on", "roller"],
-    "description": "Industry standard carry-on size"
+    "description": "Lightweight polycarbonate shell",
+    "commission_tier": "high",
+    "image_url": "https://placehold.co/400x500/ef4444/white?text=Monos",
+    "versatility_score": 82
   },
   {
-    "id": "max-carry-on",
-    "name": "Maximum Size Carry-On",
+    "id": "patagonia-black-hole-40l",
+    "name": "Patagonia Black Hole 40L",
+    "brand": "Patagonia",
     "dimensions": {
-      "h": 24,
-      "w": 16,
-      "d": 10,
+      "h": 21,
+      "w": 13,
+      "d": 9,
+      "unit": "in"
+    },
+    "material": "soft",
+    "estimated_price": 179,
+    "affiliate_link": "AMAZON_LINK_HERE",
+    "categories": ["carry-on", "duffel"],
+    "description": "Durable weather-resistant duffel",
+    "commission_tier": "medium",
+    "image_url": "https://placehold.co/400x500/059669/white?text=Patagonia",
+    "versatility_score": 85
+  },
+  {
+    "id": "travelpro-maxlite-5",
+    "name": "Travelpro Maxlite 5 Carry-On",
+    "brand": "Travelpro",
+    "dimensions": {
+      "h": 22,
+      "w": 14,
+      "d": 9,
+      "unit": "in"
+    },
+    "material": "soft",
+    "estimated_price": 129,
+    "affiliate_link": "AMAZON_LINK_HERE",
+    "categories": ["carry-on", "roller"],
+    "description": "Lightweight soft-sided roller",
+    "commission_tier": "medium",
+    "image_url": "https://placehold.co/400x500/64748b/white?text=Travelpro",
+    "versatility_score": 83
+  },
+  {
+    "id": "cotopaxi-allpa-35l",
+    "name": "Cotopaxi Allpa 35L",
+    "brand": "Cotopaxi",
+    "dimensions": {
+      "h": 21.5,
+      "w": 13.5,
+      "d": 9,
+      "unit": "in"
+    },
+    "material": "soft",
+    "estimated_price": 200,
+    "affiliate_link": "AMAZON_LINK_HERE",
+    "categories": ["carry-on", "backpack"],
+    "description": "Sustainable travel backpack",
+    "commission_tier": "medium",
+    "image_url": "https://placehold.co/400x500/f97316/white?text=Cotopaxi",
+    "versatility_score": 87
+  },
+  {
+    "id": "amazon-basics-hardside-20",
+    "name": "Amazon Basics Hardside 20\"",
+    "brand": "Amazon Basics",
+    "dimensions": {
+      "h": 20,
+      "w": 13.5,
+      "d": 9,
       "unit": "in"
     },
     "material": "hard",
-    "estimated_price": 149.99,
-    "affiliate_link": "https://amazon.com/dp/example6",
+    "estimated_price": 59.99,
+    "affiliate_link": "AMAZON_LINK_HERE",
     "categories": ["carry-on", "roller"],
-    "description": "Largest allowable on some airlines"
+    "description": "Budget hardside spinner",
+    "commission_tier": "low",
+    "image_url": "https://placehold.co/400x500/78716c/white?text=AmazonBasics",
+    "versatility_score": 90
   },
   {
-    "id": "spirit-killer",
-    "name": "Oversized Carry-On (Too Big)",
+    "id": "osprey-daylite-plus",
+    "name": "Osprey Daylite Plus",
+    "brand": "Osprey",
     "dimensions": {
-      "h": 25,
-      "w": 18,
-      "d": 11,
+      "h": 18.5,
+      "w": 13,
+      "d": 9,
       "unit": "in"
     },
-    "material": "hard",
-    "estimated_price": 169.99,
-    "affiliate_link": "https://amazon.com/dp/example7",
-    "categories": ["carry-on", "roller"],
-    "description": "Will not fit most airline sizers - guaranteed gate check"
+    "material": "soft",
+    "estimated_price": 65,
+    "affiliate_link": "LINK_OSPREY_KEY",
+    "categories": ["personal", "backpack"],
+    "description": "Perfect personal item for all airlines",
+    "commission_tier": "medium",
+    "image_url": "https://placehold.co/400x500/a855f7/white?text=Daylite+Plus",
+    "versatility_score": 98
   },
   {
-    "id": "tote-bag",
+    "id": "personal-item-tote",
     "name": "Canvas Tote Bag",
+    "brand": "Generic",
     "dimensions": {
       "h": 15,
       "w": 13,
@@ -115,13 +258,112 @@
     },
     "material": "soft",
     "estimated_price": 29.99,
-    "affiliate_link": "https://amazon.com/dp/example8",
+    "affiliate_link": "AMAZON_LINK_HERE",
     "categories": ["personal", "tote"],
-    "description": "Flexible personal item for any airline"
+    "description": "Flexible personal item for any airline",
+    "commission_tier": "low",
+    "image_url": "https://placehold.co/400x500/94a3b8/white?text=Canvas+Tote",
+    "versatility_score": 100
+  },
+  {
+    "id": "underseat-roller",
+    "name": "Underseat Roller Bag",
+    "brand": "Generic",
+    "dimensions": {
+      "h": 16,
+      "w": 13,
+      "d": 8,
+      "unit": "in"
+    },
+    "material": "hard",
+    "estimated_price": 89.99,
+    "affiliate_link": "AMAZON_LINK_HERE",
+    "categories": ["personal", "roller"],
+    "description": "Wheeled personal item convenience",
+    "commission_tier": "low",
+    "image_url": "https://placehold.co/400x500/475569/white?text=Underseat",
+    "versatility_score": 95
+  },
+  {
+    "id": "small-backpack",
+    "name": "Compact Personal Backpack",
+    "brand": "Generic",
+    "dimensions": {
+      "h": 16,
+      "w": 12,
+      "d": 7,
+      "unit": "in"
+    },
+    "material": "soft",
+    "estimated_price": 39.99,
+    "affiliate_link": "AMAZON_LINK_HERE",
+    "categories": ["personal", "backpack"],
+    "description": "Perfect for tight personal item requirements",
+    "commission_tier": "low",
+    "image_url": "https://placehold.co/400x500/71717a/white?text=Compact",
+    "versatility_score": 100
+  },
+  {
+    "id": "standard-carry-on",
+    "name": "Standard Carry-On Roller",
+    "brand": "Generic",
+    "dimensions": {
+      "h": 22,
+      "w": 14,
+      "d": 9,
+      "unit": "in"
+    },
+    "material": "hard",
+    "estimated_price": 129.99,
+    "affiliate_link": "AMAZON_LINK_HERE",
+    "categories": ["carry-on", "roller"],
+    "description": "Industry standard carry-on size",
+    "commission_tier": "low",
+    "image_url": "https://placehold.co/400x500/52525b/white?text=Standard",
+    "versatility_score": 85
+  },
+  {
+    "id": "max-carry-on",
+    "name": "Maximum Size Carry-On",
+    "brand": "Generic",
+    "dimensions": {
+      "h": 24,
+      "w": 16,
+      "d": 10,
+      "unit": "in"
+    },
+    "material": "hard",
+    "estimated_price": 149.99,
+    "affiliate_link": "AMAZON_LINK_HERE",
+    "categories": ["carry-on", "roller"],
+    "description": "Largest allowable on some airlines",
+    "commission_tier": "low",
+    "image_url": "https://placehold.co/400x500/3f3f46/white?text=Max+Size",
+    "versatility_score": 60
+  },
+  {
+    "id": "oversized-fail",
+    "name": "Oversized Carry-On (Too Big)",
+    "brand": "Generic",
+    "dimensions": {
+      "h": 25,
+      "w": 18,
+      "d": 11,
+      "unit": "in"
+    },
+    "material": "hard",
+    "estimated_price": 169.99,
+    "affiliate_link": "AMAZON_LINK_HERE",
+    "categories": ["carry-on", "roller"],
+    "description": "Will not fit most airline sizers - guaranteed gate check",
+    "commission_tier": "low",
+    "image_url": "https://placehold.co/400x500/27272a/white?text=Too+Big",
+    "versatility_score": 10
   },
   {
     "id": "duffel-small",
     "name": "Small Duffel Bag",
+    "brand": "Generic",
     "dimensions": {
       "h": 18,
       "w": 12,
@@ -130,23 +372,11 @@
     },
     "material": "soft",
     "estimated_price": 45.99,
-    "affiliate_link": "https://amazon.com/dp/example9",
+    "affiliate_link": "AMAZON_LINK_HERE",
     "categories": ["personal", "duffel"],
-    "description": "Squishable personal item option"
-  },
-  {
-    "id": "duffel-large",
-    "name": "Large Duffel Bag",
-    "dimensions": {
-      "h": 22,
-      "w": 15,
-      "d": 10,
-      "unit": "in"
-    },
-    "material": "soft",
-    "estimated_price": 65.99,
-    "affiliate_link": "https://amazon.com/dp/example10",
-    "categories": ["carry-on", "duffel"],
-    "description": "Soft-sided carry-on alternative"
+    "description": "Squishable personal item option",
+    "commission_tier": "low",
+    "image_url": "https://placehold.co/400x500/18181b/white?text=Small+Duffel",
+    "versatility_score": 92
   }
 ]
