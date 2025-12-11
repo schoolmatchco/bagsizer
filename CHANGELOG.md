@@ -116,14 +116,95 @@ All notable changes to the BagSizer.io project will be documented in this file.
 - **Assets Available**: 23 airline SVG logos in /SVG Logos and /public/SVG Logos directories
 - **Documentation**: Updated project blueprint with implementation status
 
+#### Split Intent Architecture Implementation - 2025-12-11
+
+**MAJOR ARCHITECTURAL OVERHAUL** implementing dual-path user flow (Addendum A & B) to significantly increase monetization potential from 40% to 100% of users.
+
+**Strategic Pivot**:
+- **Before**: Only monetize when bags fail (40% of users)
+- **After**: Show verified bags immediately to all users (shoppers + owners)
+- **Expected Impact**: 2-3x revenue increase
+
+**New Features**:
+- **Dual-Mode Bag Selection**:
+  * Search Mode: Fuzzy search with Fuse.js for finding bags by brand/name
+  * Manual Input Mode: Enter custom dimensions with in/cm unit toggle
+- **Verified Bag Recommendations**:
+  * Real-time filtering of bags that fit selected airline
+  * 0.5" safety margin for "verified" badge
+  * Commission tier prioritization (high > medium > low)
+  * Versatility score secondary sorting
+- **Split Intent Layout**:
+  * Desktop: 2-column split (60% checker, 40% verified bags)
+  * Mobile: Vertical stack with horizontal scroll carousel
+  * Sticky positioning for verified bags on desktop
+- **Enhanced Compliance Checking**:
+  * Supports both selectedBag and customDimensions
+  * Mutual exclusivity between modes
+  * Real-time validation
+
+**New Components**:
+- `BagCard.tsx`: Product card with verified badge, pricing, affiliate CTA, hover animations
+- `VerifiedBagGrid.tsx`: Responsive grid/carousel with desktop 2-3 columns, mobile horizontal scroll
+- `BagSelector.tsx`: Complete rewrite with search + manual input modes, unit toggle
+
+**Updated Components**:
+- `page.tsx`: Complete refactor with split-column responsive layout
+- `useAppStore.ts`: Added customDimensions field for manual input
+- `bags.json`: Expanded from 10 to 20 products with new schema fields
+- `complianceEngine.ts`: Added 'low' strictness level support
+
+**New Utilities**:
+- `bagFilters.ts`:
+  * `getVerifiedBags()`: Filter bags with safety margin, sort by commission tier
+  * `getAlternativeBags()`: Recommend similar bags on failure
+  * `searchBags()`: Simple text search (enhanced by Fuse.js in component)
+- Tailwind scrollbar-hide utility for smooth mobile carousel
+
+**Data Enhancements**:
+- **Bags Database**: 20 products from premium brands
+  * Added: Away, Tortuga, Osprey, Peak Design, Monos, Aer, CabinZero, Patagonia, Cotopaxi
+  * New fields: `brand`, `commission_tier`, `image_url`, `versatility_score`
+  * Placeholder images via placehold.co
+  * Commission tiers: high (8 bags), medium (6 bags), low (6 bags)
+
+**Dependencies**:
+- Added `fuse.js@7.1.0` for fuzzy search functionality
+
+**Technical Improvements**:
+- Type safety: Added 'low' strictness to Sizer interface
+- Null-safe: Non-null assertions for bagToCheck in dimension display
+- Responsive: `lg:grid-cols-[1.5fr_1fr]` for optimal desktop split
+- Build verified: Production build successful with all optimizations
+
+**Business Logic**:
+- Commission tier prioritization ensures high-margin products shown first
+- Safety margin (0.5") reduces liability and improves customer satisfaction
+- Versatility score helps users find bags that work across multiple airlines
+- Separate state management prevents conflicts between search and manual modes
+
+**User Experience**:
+- Shoppers see verified bags immediately without needing to check first
+- Bag owners can search OR enter dimensions manually
+- Mobile users get optimized carousel with snap scrolling
+- Desktop users see products persistently while checking bags
+
+**Deployment**:
+- Committed: 11 files changed, 1102 insertions(+), 367 deletions(-)
+- New files: 3 components, 1 utility module
+- Pushed to GitHub: commit 2751c46
+- Auto-deployed to Vercel via GitHub push
+
 ### Next Development Phase
+- **Smart Fail Animations**: Shake effect on failure, auto-highlight alternatives
+- **Real Affiliate Links**: Replace placeholder keys with actual partner URLs
+- **Real Product Images**: Replace placehold.co with actual bag images
+- **Enhanced Search**: Add filters by category, material, price range
+- **Alternative Recommendations**: Show similar bags on failure with category matching
 - **Rotation Algorithm**: Implement dimension rotation logic for better fit detection
 - **Yellow Warning State**: Add "risky" category for soft bags near limits
-- **SVG Visualizer**: Build animated sizer cage with shake-on-fail
-- **Alternative Bags**: Implement monetization component with affiliate recommendations
-- **Expanded Bag Database**: Add 50+ popular bags with real affiliate links
 - **SEO Optimization**: Meta tags, OpenGraph, structured data
-- **Analytics**: Vercel Analytics integration
+- **Analytics**: Vercel Analytics integration to track conversion rates
 - **Performance**: Further optimization for Core Web Vitals
 
 ---
