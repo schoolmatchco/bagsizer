@@ -68,10 +68,10 @@ export default function Home() {
       {!selectedAirline && (
         <div className="container mx-auto px-6 py-20 max-w-4xl text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight">
-            Check if your bag fits<br />before you reach the gate
+            Find the perfect bag for your flight<br />or check if yours fits
           </h1>
           <p className="text-xl text-slate-600 mb-12 max-w-2xl mx-auto">
-            Avoid surprise fees up to $99. Compare your bag against airline size requirements instantly.
+            Avoid surprise fees up to $99. Get verified bag recommendations or check your bag against airline size requirements.
           </p>
           <button
             onClick={() => setShowAirlines(true)}
