@@ -77,7 +77,7 @@ export default function Home() {
             onClick={() => setShowAirlines(true)}
             className="inline-flex items-center gap-2 px-8 py-4 bg-slate-900 hover:bg-slate-800 text-white font-semibold rounded-full transition-all shadow-lg hover:shadow-xl"
           >
-            Check your airline
+            Get started
             <ChevronRight size={20} />
           </button>
         </div>
