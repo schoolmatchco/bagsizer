@@ -1,0 +1,83 @@
+[
+  {
+    "id": "spirit-airlines",
+    "name": "Spirit Airlines",
+    "logo_code": "NKS",
+    "regions": ["US"],
+    "sizers": {
+      "personal": {
+        "h": 18,
+        "w": 14,
+        "d": 8,
+        "unit": "in",
+        "strictness": "high",
+        "hard_sided": true
+      },
+      "carry_on": {
+        "h": 22,
+        "w": 18,
+        "d": 10,
+        "unit": "in",
+        "strictness": "medium",
+        "hard_sided": true
+      }
+    },
+    "fees": {
+      "gate_check": 99
+    }
+  },
+  {
+    "id": "united-airlines",
+    "name": "United Airlines",
+    "logo_code": "UAL",
+    "regions": ["US"],
+    "sizers": {
+      "personal": {
+        "h": 17,
+        "w": 10,
+        "d": 9,
+        "unit": "in",
+        "strictness": "extreme",
+        "hard_sided": false
+      },
+      "carry_on": {
+        "h": 22,
+        "w": 14,
+        "d": 9,
+        "unit": "in",
+        "strictness": "high",
+        "hard_sided": true
+      }
+    },
+    "fees": {
+      "gate_check": 65
+    }
+  },
+  {
+    "id": "ryanair",
+    "name": "Ryanair",
+    "logo_code": "RYR",
+    "regions": ["EU"],
+    "sizers": {
+      "personal": {
+        "h": 15.7,
+        "w": 9.8,
+        "d": 7.8,
+        "unit": "in",
+        "strictness": "extreme",
+        "hard_sided": true
+      },
+      "carry_on": {
+        "h": 21.6,
+        "w": 15.7,
+        "d": 7.8,
+        "unit": "in",
+        "strictness": "high",
+        "hard_sided": true
+      }
+    },
+    "fees": {
+      "gate_check": 75
+    }
+  }
+]

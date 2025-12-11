@@ -1,0 +1,30 @@
+[
+  {
+    "id": "sample-personal-backpack",
+    "name": "Compact Travel Backpack",
+    "dimensions": {
+      "h": 16,
+      "w": 12,
+      "d": 7,
+      "unit": "in"
+    },
+    "material": "soft",
+    "estimated_price": 49.99,
+    "affiliate_link": "",
+    "categories": ["personal", "backpack"]
+  },
+  {
+    "id": "sample-carry-on-roller",
+    "name": "Standard Carry-On Roller",
+    "dimensions": {
+      "h": 22,
+      "w": 14,
+      "d": 9,
+      "unit": "in"
+    },
+    "material": "hard",
+    "estimated_price": 129.99,
+    "affiliate_link": "",
+    "categories": ["carry-on", "roller"]
+  }
+]
